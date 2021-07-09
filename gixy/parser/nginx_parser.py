@@ -52,10 +52,18 @@ class NginxParser(object):
         return root
 
     def parse_block(self, parsed_block, parent):
+        no_gixy = False
         for parsed in parsed_block:
             parsed_type = parsed.getName()
             parsed_name = parsed[0]
             parsed_args = parsed[1:]
+            if parsed_type == "directive" and no_gixy:
+                no_gixy = False
+                continue
+            if parsed_type == "comment" and "nogixy" in parsed_name:
+                no_gixy = True
+            else:
+                no_gixy = False
             if parsed_type == 'include':
                 # TODO: WTF?!
                 self._resolve_include(parsed_args, parent)
