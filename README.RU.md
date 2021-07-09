@@ -122,6 +122,13 @@ available plugins:
 	ssrf
 ```
 
+Добавьте nogixy в комментарий перед директивой, чтобы отключить ее проверку. Например:
+```
+# nogixy
+proxy_set_header Host $http_host;
+```
+Проверка для proxy_set_header будет отключена.
+
 # Contributing
 Contributions to Gixy are always welcome! You can help us in different ways:
   * Open an issue with suggestions for improvements and errors you're facing;

@@ -87,6 +87,13 @@ Total issues:
     High: 0
 ```
 
+Or skip some directive from check. Add comment 'nogixy' to the nginx.conf:
+```
+# nogixy
+proxy_set_header Host $http_host;
+```
+In this case no alerts for proxy_set_header will be reported.
+
 Or something else, you can find all other `gixy` arguments with the help command: `gixy --help`
 
 ## Docker usage
